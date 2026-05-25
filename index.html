@@ -1,93 +1,212 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Restart</title>
 
   <style>
-    * {
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #0f1117;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      padding: 24px;
+    body{
+      height:100vh;
+      overflow:hidden;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+      background:
+      radial-gradient(circle at top, rgba(64,114,255,0.25), transparent 40%),
+      radial-gradient(circle at bottom, rgba(120,0,255,0.2), transparent 35%),
+      #050816;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
     }
 
-    .card {
-      width: min(500px, 100%);
-      text-align: center;
-      padding: 40px 32px;
-      border: 1px solid #333846;
-      border-radius: 8px;
-      background: #1a1d26;
+    .bg-grid{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size:40px 40px;
+      opacity:0.5;
     }
 
-    h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      margin: 0 0 16px;
+    .card{
+      width:520px;
+      padding:50px;
+      border-radius:28px;
+      background:rgba(17,25,40,0.75);
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(18px);
+      text-align:center;
+      box-shadow:
+      0 0 40px rgba(84,120,255,0.15),
+      0 0 120px rgba(132,0,255,0.12);
+      position:relative;
+      z-index:2;
+      animation:float 5s ease-in-out infinite;
     }
 
-    p {
-      margin: 18px 0 0;
-      color: #b8bdc9;
-      line-height: 1.8;
-      font-size: 16px;
+    @keyframes float {
+      0%{ transform:translateY(0px); }
+      50%{ transform:translateY(-8px); }
+      100%{ transform:translateY(0px); }
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 12px 24px;
-      background: #ffffff;
-      color: #111111;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .tag{
+      display:inline-block;
+      padding:8px 18px;
+      border-radius:999px;
+      background:rgba(88,101,242,0.18);
+      border:1px solid rgba(255,255,255,0.08);
+      color:#b8c7ff;
+      font-size:14px;
+      margin-bottom:24px;
+      letter-spacing:1px;
     }
 
-    .btn:hover {
-      background: #e7e9ef;
+    h1{
+      font-size:64px;
+      font-weight:800;
+      margin-bottom:18px;
+      letter-spacing:2px;
+      background:linear-gradient(to right,#ffffff,#8ab4ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    @media (max-width: 520px) {
-      .card {
-        padding: 32px 22px;
-      }
+    .subtitle{
+      font-size:18px;
+      line-height:1.9;
+      color:#cfd6ff;
+      margin-bottom:30px;
+    }
 
-      h1 {
-        font-size: 38px;
-      }
+    .status{
+      margin-top:10px;
+      margin-bottom:35px;
+      color:#8fa0ff;
+      font-size:15px;
+      line-height:2;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      text-decoration:none;
+      padding:14px 28px;
+      border-radius:14px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .primary{
+      background:white;
+      color:black;
+    }
+
+    .primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(255,255,255,0.18);
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,0.15);
+      color:white;
+      background:rgba(255,255,255,0.05);
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,0.1);
+      transform:translateY(-3px);
+    }
+
+    .footer{
+      margin-top:40px;
+      font-size:13px;
+      color:#7f88b7;
+      letter-spacing:1px;
+    }
+
+    .light1,
+    .light2{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      z-index:1;
+    }
+
+    .light1{
+      width:300px;
+      height:300px;
+      background:#375dff;
+      top:-80px;
+      left:-100px;
+      opacity:0.25;
+    }
+
+    .light2{
+      width:260px;
+      height:260px;
+      background:#9b3dff;
+      bottom:-100px;
+      right:-80px;
+      opacity:0.22;
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
+
+  <div class="bg-grid"></div>
+  <div class="light1"></div>
+  <div class="light2"></div>
+
+  <div class="card">
+
+    <div class="tag">
+      AI ERA RESTART
+    </div>
+
     <h1>AI Restart</h1>
 
-    <p>
-      一个待业两年的人，<br />
-      正在AI时代重新开始。
-    </p>
+    <div class="subtitle">
+      一个待业两年的人，<br>
+      正在 AI 时代重新开始。
+    </div>
 
-    <p>
-      Day 1:<br />
-      ChatGPT / Codex / GitHub / 人工智能重启计划
-    </p>
+    <div class="status">
+      Day 1 · ChatGPT · Codex · GitHub<br>
+      正在学习、创造、重新进入世界。
+    </div>
 
-    <a class="btn" href="https://github.com/Wang-peng-eng" target="_blank" rel="noopener noreferrer">
-      My GitHub
-    </a>
-  </main>
+    <div class="buttons">
+      <a class="btn primary" href="https://github.com/Wang-peng-eng" target="_blank">
+        My GitHub
+      </a>
+
+      <a class="btn secondary" href="#">
+        AI Journey
+      </a>
+    </div>
+
+    <div class="footer">
+      Restarting life in the age of AI.
+    </div>
+
+  </div>
+
 </body>
 </html>
